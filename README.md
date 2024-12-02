@@ -4,23 +4,38 @@ A MCP server project
 
 ## Quickstart
 
+Register at https://claude.ai and buy Pro subscription
+
 ### Install
+
+Install Claude Desktop
+https://claude.ai/download
+
+Install uv:
+```bash
+brew install uv
+```
+
+Install keyring:
+https://pypi.org/project/keyring/
+
+#### Store password for jira account
+```bash
+keyring set hh-jira-mcp-server v.pupkin
+```
 
 #### Claude Desktop
 
 On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`
 On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
-Development/Unpublished Servers Configuration
+Published Servers Configuration
 ```json
 {
   "mcpServers": {
     "hh-jira-mcp-server": {
-      "command": "uv",
+      "command": "uvx",
       "args": [
-        "--directory",
-        "<path_to_project>/hh-jira-mcp-server",
-        "run",
         "hh-jira-mcp-server"
       ],
       "env": {
@@ -33,13 +48,16 @@ Development/Unpublished Servers Configuration
 }
 ```
 
-Published Servers Configuration
+Development/Unpublished Servers Configuration
 ```json
 {
   "mcpServers": {
     "hh-jira-mcp-server": {
-      "command": "uvx",
+      "command": "uv",
       "args": [
+        "--directory",
+        "<path_to_project>/hh-jira-mcp-server",
+        "run",
         "hh-jira-mcp-server"
       ],
       "env": {
@@ -88,7 +106,7 @@ experience, we strongly recommend using the [MCP Inspector](https://github.com/m
 You can launch the MCP Inspector via [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) with this command:
 
 ```bash
-npx @modelcontextprotocol/inspector uv --directory /Users/adubinin/IdeaProjects/hh-jira-mcp-server run hh-jira-mcp-server
+npx @modelcontextprotocol/inspector uv --directory <path_to_project>/hh-jira-mcp-server run hh-jira-mcp-server
 ```
 
 
